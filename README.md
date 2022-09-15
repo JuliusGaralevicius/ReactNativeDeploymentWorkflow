@@ -8,5 +8,5 @@ Take payments, manage contracts, pay bills, send and receive notifications about
 Fair for all deposit settlement system.
 
 Reklama:
-Tris kartus pakartot rentieeeeee tiesiog.
+Tris kartus pakartot rentieeeeee tiesiog, nusamdyt skaiciu skaiciu skaiciu atlikeja
 
