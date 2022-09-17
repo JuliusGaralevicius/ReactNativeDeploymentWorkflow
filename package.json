@@ -7,12 +7,15 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "np": "np --no-publish",
+    "postversion": "react-native-version"
   },
   "dependencies": {
-    "react": "16.13.1",
-    "react-native": "0.63.4",
     "@reduxjs/toolkit": "^1.2.5",
+    "react": "18.1.0",
+    "react-native": "^0.70.1",
+    "react-native-version": "^4.0.0",
     "react-redux": "^7.2.0"
   },
   "devDependencies": {
@@ -22,16 +25,20 @@
     "@types/jest": "^25.2.3",
     "@types/react-native": "^0.63.2",
     "@types/react-redux": "^7.1.16",
-    "@types/react-test-renderer": "^16.9.2",
+    "@types/react-test-renderer": "18.0.0",
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
-    "react-test-renderer": "16.13.1",
+    "react-test-renderer": "18.0.0",
     "typescript": "^3.8.3"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuliusGaralevicius/rent-mobile.git"
+  }, 
   "resolutions": {
-    "@types/react": "^16"
+    "@types/react": "^18"
   },
   "jest": {
     "preset": "react-native",
