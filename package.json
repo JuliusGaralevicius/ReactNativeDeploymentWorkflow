@@ -1,6 +1,6 @@
 {
   "name": "rentnative",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -36,7 +36,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JuliusGaralevicius/rent-mobile.git"
-  }, 
+  },
   "resolutions": {
     "@types/react": "^18"
   },
