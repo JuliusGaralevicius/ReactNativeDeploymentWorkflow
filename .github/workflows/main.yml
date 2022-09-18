@@ -57,7 +57,7 @@ jobs:
 
       - name: Generate signed APK
         id: sign_app
-        uses:  ${{ github.workspace }}/actions/build-signed-apk@main
+        uses:  ${{ env.workspace }}/actions/build-signed-apk@main
         with:
           keystore_b64: ${{ secrets.ANDROID_SIGNING_KEY_BASE64 }}
           keystore_password: ${{ secrets.ANDROID_SIGNING_STORE_PASSWORD }}
