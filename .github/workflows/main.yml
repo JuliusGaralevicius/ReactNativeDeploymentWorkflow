@@ -58,7 +58,7 @@ jobs:
       - name: Generate App APK
         run: |
           cd android && ./gradlew assembleRelease --no-daemon
-      
+
       - name: Sign APK
         id: sign_app
         uses: r0adkll/sign-android-release@v1
@@ -68,6 +68,7 @@ jobs:
           alias: ${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}
           keyStorePassword: ${{ secrets.ANDROID_SIGNING_STORE_PASSWORD }}
           keyPassword: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
+      
       
       ## Distribute app to Firebase App Distribution for testing / use google play internal track if you have a google play account
       - name: upload artifact to Firebase App Distribution
