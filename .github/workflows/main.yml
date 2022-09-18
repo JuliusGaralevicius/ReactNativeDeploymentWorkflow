@@ -55,8 +55,11 @@ jobs:
       - name: Make Gradlew Executable
         run: cd android && chmod +x ./gradlew
 
+
+      - uses: actions/build-signed-apk@main # Necessary to access local action
       - name: Generate signed APK
-        uses: actions/build-signed-apk@main
+        id: sign_app
+        uses: ./actions/build-signed-apk
         with:
           keystore_b64: ${{ secrets.ANDROID_SIGNING_KEY_BASE64 }}
           keystore_password: ${{ secrets.ANDROID_SIGNING_STORE_PASSWORD }}
