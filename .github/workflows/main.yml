@@ -63,7 +63,7 @@ jobs:
         id: sign_app
         uses: r0adkll/sign-android-release@v1
         with:
-          releaseDirectory: rentnative/android/app/build/outputs/apk/release
+          releaseDirectory: android/app/build/outputs/apk/release
           signingKeyBase64: ${{ secrets.ANDROID_SIGNING_KEY_BASE64 }}
           alias: ${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}
           keyStorePassword: ${{ secrets.ANDROID_SIGNING_STORE_PASSWORD }}
