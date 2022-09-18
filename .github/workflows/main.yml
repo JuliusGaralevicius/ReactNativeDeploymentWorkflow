@@ -9,7 +9,9 @@ jobs:
   android-build:
     name: Android Build
     runs-on: ubuntu-latest # using ubuntu latest version / or you can use a specific version
-
+    defaults:
+      run:
+        working-directory: ./rentnative
     steps:
       - name: Check out Git repository # clone the repo to local ci workspace
         uses: actions/checkout@v2
@@ -61,7 +63,7 @@ jobs:
         id: sign_app
         uses: r0adkll/sign-android-release@v1
         with:
-          releaseDirectory: android/app/build/outputs/apk/release
+          releaseDirectory: rentnative/android/app/build/outputs/apk/release
           signingKeyBase64: ${{ secrets.ANDROID_SIGNING_KEY }}
           alias: ${{ secrets.ANDROID_ALIAS }}
           keyStorePassword: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
