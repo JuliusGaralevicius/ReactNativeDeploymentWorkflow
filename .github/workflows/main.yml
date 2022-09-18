@@ -9,7 +9,9 @@ jobs:
   android-build:
     name: Android Build
     runs-on: ubuntu-latest # using ubuntu latest version / or you can use a specific version
-
+    defaults:
+      run:
+        working-directory: ./rentnative
     steps:
       - name: Check out Git repository # clone the repo to local ci workspace
         uses: actions/checkout@v2
