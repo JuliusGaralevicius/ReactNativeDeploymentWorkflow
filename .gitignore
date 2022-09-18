@@ -63,3 +63,4 @@ buck-out/
 /ios/Pods/
 android/app/pc-api-6501847038246958128-925-ceabe4ffc0b3.json
 rentnative/android/app/rentnativekeybase64.txt
+rentnative/android/app/secrets.gradle
