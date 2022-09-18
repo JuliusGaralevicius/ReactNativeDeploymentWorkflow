@@ -57,7 +57,7 @@ jobs:
 
       - name: Generate signed APK
         id: sign_app
-        uses: JuliusGaralevicius/build-and-sign-apk@main
+        uses: JuliusGaralevicius/build-and-sign-apk@master
         with:
           keystore_b64: ${{ secrets.ANDROID_SIGNING_KEY_BASE64 }}
           keystore_password: ${{ secrets.ANDROID_SIGNING_STORE_PASSWORD }}
