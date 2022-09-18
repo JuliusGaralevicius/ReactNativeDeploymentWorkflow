@@ -83,15 +83,7 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
-if (file('secrets.gradle').exists()) {
-    apply from: 'secrets.gradle'
-}
-else {
-    ANROID_KEYSTORE_KEY_RELEASE = "rentnativekey.keystore"
-    ANDROID_SIGNING_STORE_PASSWORD = "qwertyuiop"
-    ANDROID_SIGNING_KEY_ALIAS = "rentnativekey"
-    ANDROID_SIGNING_KEY_PASSWORD = "qwertyuiop"
-}
+
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
@@ -226,10 +218,6 @@ android {
             keyPassword 'android'
         }
         release {
-            storeFile = file(System.getenv("ANROID_KEYSTORE_KEY_RELEASE"))
-            storePassword System.getenv("ANDROID_SIGNING_STORE_PASSWORD")
-            keyAlias System.getenv("ANDROID_SIGNING_KEY_ALIAS")
-            keyPassword System.getenv("ANDROID_SIGNING_KEY_PASSWORD")
         }
     }
     buildTypes {
@@ -239,7 +227,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
