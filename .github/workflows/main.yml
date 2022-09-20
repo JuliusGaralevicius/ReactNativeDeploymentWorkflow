@@ -68,7 +68,7 @@ jobs:
         uses: timheuer/base64-to-file@master
         with:
           fileName: 'credential_file.json'
-          encodedString: ${{ secrets.ANDROID_FIREBASE_SERVICE_ACCOUNT_64 }
+          encodedString: ${{ secrets.ANDROID_FIREBASE_SERVICE_ACCOUNT_64 }}
           
       - name: Move credential file to repository location
         run: mv ${{ steps.fetch_credential_file.outputs.filePath }} ${{ github.workspace }}
