@@ -72,7 +72,7 @@ jobs:
           encodedString: ${{ secrets.ANDROID_FIREBASE_SERVICE_ACCOUNT_64 }}
           
       - name: echo file 
-      - shell: bash
+        shell: bash
         run: echo ${{steps.decode-appdistribution-serviceaccount.outputs.filePath}}
              cat ${{steps.decode-appdistribution-serviceaccount.outputs.filePath}}
           
