@@ -61,7 +61,7 @@ jobs:
           keystore_password: ${{ secrets.ANDROID_SIGNING_STORE_PASSWORD }}
           key_alias: ${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}
           key_password: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
-          gradlew_dir: ${{ github.host-workspace }}
+          gradlew_dir: ${{ github.host-workspace }}/rentnative
           
       ## Distribute app to Firebase App Distribution for testing / use google play internal track if you have a google play account
       - name: upload artifact to Firebase App Distribution
