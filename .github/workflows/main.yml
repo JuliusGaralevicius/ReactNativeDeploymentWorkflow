@@ -74,7 +74,9 @@ jobs:
         run: mv ${{ steps.fetch_credential_file.outputs.filePath }} ${{ github.workspace }}
       
       - name: debug
-        run: ls ${{ github.workspace }}
+        run: echo "$(credential_file.json)"
+             
+
         
       ## Distribute app to Firebase App Distribution for testing / use google play internal track if you have a google play account
       - name: upload artifact to Firebase App Distribution
