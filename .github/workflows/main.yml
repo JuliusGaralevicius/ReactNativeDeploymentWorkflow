@@ -63,25 +63,25 @@ jobs:
           key_password: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
           gradlew_dir: ${{ github.workspace }}/rentnative/android/
       
-      - name: Decode service account
-        id: decode-appdistribution-serviceaccount
+      - name: Fetch credential file from secrets
+        id: fetch_credential_file
         uses: timheuer/base64-to-file@master
         with:
-          fileName: 'service-account.json'
-          fileDir: './app_distribution/'
-          encodedString: ${{ secrets.ANDROID_FIREBASE_SERVICE_ACCOUNT_64 }}
+          fileName: 'credential_file.json'
+          encodedString: ${{ secrets.ANDROID_FIREBASE_SERVICE_ACCOUNT_64 }
           
-      - name: echo file 
-        shell: bash
-        run: echo ${{steps.decode-appdistribution-serviceaccount.outputs.filePath}}
-             cat ${{steps.decode-appdistribution-serviceaccount.outputs.filePath}}
-          
+      - name: Move credential file to repository location
+        run: mv ${{ steps.fetch_credential_file.outputs.filePath }} ${{ github.workspace }}
+      
+      - name: debug
+        run: ls ${{ github.workspace }}
+        
       ## Distribute app to Firebase App Distribution for testing / use google play internal track if you have a google play account
       - name: upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.3.4
         with:
           appId: ${{secrets.ANDROID_FIREBASE_APP_ID}}
-          serviceCredentialsFile: ${{ steps.decode-appdistribution-serviceaccount.outputs.filePath }}
+          serviceCredentialsFile: ${{ github.workspace }}/credential_file.json
           groups: testers
           file: ${{steps.build_and_sign_app.outputs.signed-bundle}}
           debug: true
