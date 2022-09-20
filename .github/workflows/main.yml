@@ -79,5 +79,6 @@ jobs:
           serviceCredentialsFile: ${{ steps.decode-appdistribution-serviceaccount.outputs.filePath }}
           groups: testers
           file: ${{steps.build_and_sign_app.outputs.signed-bundle}}
+          debug: true
      
 
