@@ -63,13 +63,18 @@ jobs:
           key_password: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
           gradlew_dir: ${{ github.workspace }}/rentnative/android/
       
-      - name: Decode AppDistribution ServiceAccount to JSON file
+      - name: Decode service account
         id: decode-appdistribution-serviceaccount
         uses: timheuer/base64-to-file@master
         with:
           fileName: 'service-account.json'
           fileDir: './app_distribution/'
           encodedString: ${{ secrets.ANDROID_FIREBASE_SERVICE_ACCOUNT_64 }}
+          
+      - name: echo file 
+      - shell: bash
+        run: echo ${{steps.decode-appdistribution-serviceaccount.outputs.filePath}}
+             cat ${{steps.decode-appdistribution-serviceaccount.outputs.filePath}}
           
       ## Distribute app to Firebase App Distribution for testing / use google play internal track if you have a google play account
       - name: upload artifact to Firebase App Distribution
