@@ -54,7 +54,7 @@ jobs:
             ${{ runner.os }}-gradle-caches-
 
       - name: Generate signed APK
-        id: sign_app
+        id: build_and_sign_app
         uses: JuliusGaralevicius/build-and-sign-apk@master
         with:
           keystore_b64: ${{ secrets.ANDROID_SIGNING_KEY_BASE64 }}
@@ -62,14 +62,22 @@ jobs:
           key_alias: ${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}
           key_password: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
           gradlew_dir: ${{ github.workspace }}/rentnative/android/
+      
+      - name: Decode AppDistribution ServiceAccount to JSON file
+        id: decode-appdistribution-serviceaccount
+        uses: timheuer/base64-to-file@master
+        with:
+          fileName: 'service-account.json'
+          fileDir: './app_distribution/'
+          encodedString: ${{ secrets.ANDROID_FIREBASE_SERVICE_ACCOUNT_64 }}
           
       ## Distribute app to Firebase App Distribution for testing / use google play internal track if you have a google play account
       - name: upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.3.4
         with:
           appId: ${{secrets.ANDROID_FIREBASE_APP_ID}}
-          serviceCredentialsFile: ${{secrets.ANDROID_FIREBASE_SERVICE_CREDENTIALS}}
+          serviceCredentialsFile: ${{ steps.decode-appdistribution-serviceaccount.outputs.filePath }}
           groups: testers
-          file: ${{steps.sign_app.outputs.signedReleaseFile}}
+          file: ${{steps.build_and_sign_app.outputs.signed-bundle}}
      
 
